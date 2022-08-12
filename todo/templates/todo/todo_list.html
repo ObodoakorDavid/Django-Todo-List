@@ -1,0 +1,34 @@
+<!-- @format -->
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    {% if request.user.is_authenticated %}
+
+    <p>Hello {{request.user.username}}</p>
+
+    {% else %}
+
+    <p>Hello annonymous user</p>
+
+    {% endif %}
+
+    <a href="/todo_create">Create Todo</a>
+
+    {% for eachTodo in todolist %}
+
+    <p>
+      {{eachTodo.name}} is due {{eachTodo.due_date}} Click
+      <a href="/{{ eachTodo.id}}">Here</a> to see the todo and
+      <a href="/{{eachTodo.id}}/todo_update">Update</a> To Update
+    </p>
+
+    {% endfor %}
+  </body>
+</html>
