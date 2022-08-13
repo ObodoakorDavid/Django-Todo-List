@@ -52,10 +52,7 @@ def todo_update(request, id):
 
 
 def todo_delete(request, id):
-    todo = Todo.objects.delete(id=id)
-    form = Todoform(request.POST or None, instance=todo)
+    todo = Todo.objects.get(id=id)
+    todo.delete()
     return redirect('/')
-    context = {'form': form}
-
-    return render(request, 'todo/todo_delete.html', context)
 

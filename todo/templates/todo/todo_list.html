@@ -7,9 +7,66 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <style>
+      .detail,
+      .update,
+      .delete,
+      .create {
+        text-decoration: none;
+        color: white;
+        padding: 8px 15px;
+        border-radius: 20px;
+      }
+
+      .detail {
+        background-color: blue;
+      }
+      .detail:hover {
+        color: blue;
+        background-color: white;
+        border: 1px solid blue;
+        font-weight: bold;
+      }
+      .update {
+        background-color: green;
+      }
+      .update:hover {
+        color: green;
+        background-color: white;
+        border: 1px solid green;
+        font-weight: bold;
+      }
+      .delete {
+        background-color: red;
+      }
+      .delete:hover {
+        color: red;
+        background-color: white;
+        border: 1px solid red;
+        font-weight: bold;
+      }
+
+      .create {
+        text-decoration: none;
+        font-size: 23px;
+        font-weight: bold;
+        background-color: rgb(56, 177, 35);
+      }
+
+      .create:hover {
+        color: rgb(56, 177, 35);
+        background-color: white;
+        border: 1px solid rgb(56, 177, 35);
+        font-weight: bold;
+      }
+
+      .br {
+        margin-top: 150px;
+      }
+    </style>
   </head>
   <body>
-    {% if request.user.is_authenticated %}
+    <!-- {% if request.user.is_authenticated %}
 
     <p>Hello {{request.user.username}}</p>
 
@@ -17,18 +74,20 @@
 
     <p>Hello annonymous user</p>
 
-    {% endif %}
+    {% endif %} -->
 
-    <a href="/todo_create">Create Todo</a>
+    <h2>Todo List</h2>
+
+    <a class="create" href="/todo_create">Create Todo</a>
 
     {% for eachTodo in todolist %}
 
-    <p>
-      {{eachTodo.name}} is due {{eachTodo.due_date}} Click
-      <a href="/{{ eachTodo.id}}">Here</a> to see the todo and
-      <a href="/{{eachTodo.id}}/todo_update">Update</a> To Update
-    </p>
+    <p>{{eachTodo.name}} is due on {{eachTodo.due_date}}</p>
 
-    {% endfor %}
+    <a class="detail" href="/{{ eachTodo.id}}">Detail</a>
+    <a class="update" href="/{{eachTodo.id}}/todo_update">Update</a>
+    <a class="delete" href="/{{eachTodo.id}}/todo_delete">Delete</a>
+
+    {% endfor %} <br class="br" />
   </body>
 </html>
