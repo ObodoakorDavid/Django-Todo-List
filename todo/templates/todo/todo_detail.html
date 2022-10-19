@@ -1,15 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <ul>
-        <li>The todo name is {{todo.name}}</li>
-        <li>The due date is {{todo.due_date}}</li>
-    </ul>
-</body>
-</html>
+<!-- @format -->
+
+{% extends 'base.html' %} {% block content %}
+
+<ul>
+  <li>The todo name is {{todo.name}}</li>
+  <li>The due date is {{todo.due_date}}</li>
+</ul>
+
+<div class="card text-center">
+  <div class="card-header">Todo Detail</div>
+  <div class="card-body">
+    <p class="card-text">{{todo.name}}</p>
+    <a href="#" class="btn btn-primary">Go Home</a>
+  </div>
+  <div class="card-footer text-muted">Due on {{todo.due_date}}</div>
+</div>
+
+{% endblock %}

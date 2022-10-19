@@ -1,40 +1,42 @@
 <!-- @format -->
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="{% static 'css/style.css'%}">
-  </head>
-  <body>
-    <!-- {% if request.user.is_authenticated %}
 
-    <p>Hello {{request.user.username}}</p>
+{% extends 'base.html' %} {% load static %} {% block content %}
 
-    {% else %}
+<!-- <p>{{eachTodo.name}} is due on {{eachTodo.due_date}}</p> -->
 
-    <p>Hello annonymous user</p>
+<!-- <a class="detail" href="/{{ eachTodo.id}}">Detail</a>
+<a class="update" href="/{{eachTodo.id}}/todo_update">Update</a>
+<a class="delete" href="/{{eachTodo.id}}/todo_delete">Delete</a> -->
 
-    {% endif %} -->
-
-    <h2>Todo List</h2>
-
-    <a class="create" href="/todo_create">Create Todo</a>
-
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">No</th>
+      <th scope="col">Todo</th>
+      <th scope="col">Due Date</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
     {% for eachTodo in todolist %}
-
-    <p>{{eachTodo.name}} is due on {{eachTodo.due_date}}</p>
-
-    <a class="detail" href="/{{ eachTodo.id}}">Detail</a>
-    <a class="update" href="/{{eachTodo.id}}/todo_update">Update</a>
-    <a class="delete" href="/{{eachTodo.id}}/todo_delete">Delete</a>
-
+    <tr>
+      <th scope="row">{{eachTodo.id}}</th>
+      <td>{{eachTodo.name}}</td>
+      <td>{{eachTodo.due_date}}</td>
+      <td>
+        <a href="/{{eachTodo.id}}"
+          ><img src="{% static 'images/info-circle.svg' %}" alt=""
+        /></a>
+        <a href="/{{eachTodo.id}}/todo_update"
+          ><img src="{% static 'images/arrow-repeat.svg' %}" alt=""
+        /></a>
+        <a href="/{{eachTodo.id}}/todo_delete"
+          ><img src="{% static 'images/trash.svg' %}" alt=""
+        /></a>
+      </td>
+    </tr>
     {% endfor %}
+  </tbody>
+</table>
 
-
-
-  </body>
-</html>
+{% endblock %}

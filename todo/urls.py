@@ -7,7 +7,7 @@ urlpatterns = [
     path('todo_deleted/', todo_deleted),
     path('todo_created/', todo_created),
     path('todo_updated/', todo_updated),
-    path('<id>/todo_update/', todo_update),
-    path('<id>/todo_delete/', todo_delete),
-    path('<id>/', todo_detail),
+    path('<int:id>/todo_update/', todo_update),
+    path('<int:id>/todo_delete/', todo_delete),
+    path('<int:id>/', todo_detail),
 ]

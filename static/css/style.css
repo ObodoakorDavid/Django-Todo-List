@@ -1,4 +1,4 @@
-/** @format */
+/* * @format
 
 .detail,
 .update,
@@ -54,9 +54,13 @@
 
 .br {
   margin-top: 150px;
+} */
+
+td > img {
+  margin-right: 10px;
 }
 
-img {
-  width: 80%;
-  
+.aa{
+  color: black;
+  text-decoration: none;
 }
